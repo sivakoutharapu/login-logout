@@ -1,7 +1,24 @@
 from django.shortcuts import render,redirect,HttpResponse
 from .models import covid_data
 from django.contrib.auth import login as auth_login,logout,authenticate
+from django.contrib.auth.models import User
 # Create your views here.
+
+def register_page(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        
+        if not username:
+            return render(request, 'register.html', {'error': 'username not available'})
+        
+        user = User.objects.create_user(username=username, email=email, password=password)
+        user.save()
+        return redirect('login_user')
+    
+    return render(request, 'register.html')
+
 
 def home_page(request):
     if request.method == 'POST':

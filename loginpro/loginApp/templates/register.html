@@ -3,21 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login page</title>
+    <title>REGISTER Page</title>
 </head>
 <body>
-    <form action="{% url 'login_user' %}" method="POST" >
+    <form action="{% url 'register_page' %}" method="POST" >
         {% csrf_token %}
         <label for="username">Username: </label>
         <input type="text" name="username" id="username" placeholder="enter username"><br>
+        <label for="email">Gmail: </label>
+        <input type="email" name="email" id="email" placeholder="enter @gmail.com" value="@gmail.com"><br>
         <label for="password">Password: </label>
         <input type="text" name="password" id="password" placeholder="enter password"><br>
-        <input type="submit" value="login">
-    </form>
-
-    <form action="{% url 'register_page' %}" method="POST">
-        {% csrf_token %}
-        <input type="submit" value="register page">
+        <input type="submit" value="register">
     </form>
 </body>
 </html>
