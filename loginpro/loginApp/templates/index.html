@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Home page</h1>
+    <h1>CARONA DATA</h1>
+    <form action="" method="POST" >
+        {% csrf_token %}
+        <label for="name">Name: </label>
+        <input type="text" name="name" id="name" placeholder="enter name">
+        <label for="age">Age: </label>
+        <input type="text" name="age" id="age" placeholder="enter age">
+        <label for="carona_status">Carona_status: </label>
+        <input type="text" name="carona_status" id="carona_status" placeholder="enter carona_status">
+        <label for="place">Place: </label>
+        <input type="text" name="place" id="place" placeholder="enter place">
+        <input type="submit" value="submit">
+    </form>
+
+    <div>
+        {% for d in data %}
+        <h5><span style="color: crimson;">ID:</span> {{d.id}}    <span style="color: crimson;">Name:</span> {{d.name}}   <span style="color: crimson;">Age:</span> {{d.age}}   <span style="color: crimson;">Carona_status:</span> {{d.carona_status}}   <span style="color: crimson;">Place:</span>{{d.place}}</h5>
+        {% endfor %}
+    </div>
+    <form action="{% url 'logout_user' %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="logout">
+    </form>
+</body>
+</html>
